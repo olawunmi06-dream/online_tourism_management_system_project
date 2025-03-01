@@ -11,8 +11,7 @@ if($connect_db == true){
     echo "database connected!";
 }else{
     echo "database not connected!";
-}
-
+} 
 // CRUD for User
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getUsers') {
     $sql = "SELECT * FROM User";
@@ -66,9 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET['action']) && $_GET['
     } else {
         echo json_encode(["error" => $conn->error]);
     }
-}
-
-// CRUD for Tour Package
+}  
+// CRUD for TourPackage
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getTourPackages') {
     $sql = "SELECT * FROM TourPackage";
     $result = $conn->query($sql);
@@ -80,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['act
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] === 'createTourPackage') {
-    $data = json_decode(file_get_contents("php://input"), true);
+    $data = getJsonInput();
     $tour_package_name = $data['tour_package_name'];
     $description = $data['description'];
     $destination_id = $data['destination_id'];
@@ -102,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && $_GET['action'] === 'updateTourPackage') {
-    $data = json_decode(file_get_contents("php://input"), true);
+    $data = getJsonInput();
     $tour_package_id = $data['tour_package_id'];
     $tour_package_name = $data['tour_package_name'];
     $description = $data['description'];
@@ -132,58 +130,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET['action']) && $_GET['
     } else {
         echo json_encode(["error" => $conn->error]);
     }
-}
-   // CRUD for Destinations
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getDestinations') {
-    $sql = "SELECT * FROM Destinations";
-    $result = $conn->query($sql);
-    $destinations = [];
-    while ($row = $result->fetch_assoc()) {
-        $destinations[] = $row;
-    }
-    echo json_encode($destinations);
-}
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] === 'createDestination') {
-    $data = getJsonInput();
-    $destination_name = $data['destination_name'];
-    $city = $data['city'];
-    $description = $data['description'];
-    $image_url = $data['image_url'];
 
-    $sql = "INSERT INTO Destinations (destination_name, city, description, image_url) VALUES ('$destination_name', '$city', '$description', '$image_url')";
-    if ($conn->query($sql) === TRUE) {
-        echo json_encode(["message" => "Destination created successfully"]);
-    } else {
-        echo json_encode(["error" => $conn->error]);
-    }
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && $_GET['action'] === 'updateDestination') {
-    $data = getJsonInput();
-    $destination_id = $data['destination_id'];
-    $destination_name = $data['destination_name'];
-    $city = $data['city'];
-    $description = $data['description'];
-    $image_url = $data['image_url'];
-
-    $sql = "UPDATE Destinations SET destination_name='$destination_name', city='$city', description='$description', image_url='$image_url' WHERE destination_id=$destination_id";
-    if ($conn->query($sql) === TRUE) {
-        echo json_encode(["message" => "Destination updated successfully"]);
-    } else {
-        echo json_encode(["error" => $conn->error]);
-    }
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET['action']) && $_GET['action'] === 'deleteDestination') {
-    $destination_id = $_GET['destination_id'];
-    $sql = "DELETE FROM Destinations WHERE destination_id=$destination_id";
-    if ($conn->query($sql) === TRUE) {
-        echo json_encode(["message" => "Destination deleted successfully"]);
-    } else {
-        echo json_encode(["error" => $conn->error]);
-    }
-}
 
 // CRUD for Booking
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getBookings') {
@@ -371,7 +319,168 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET['action']) && $_GET['
     }
 }
 
+    // CRUD for Destinations
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getDestinations') {
+    $sql = "SELECT * FROM Destinations";
+    $result = $conn->query($sql);
+    $destinations = [];
+    while ($row = $result->fetch_assoc()) {
+        $destinations[] = $row;
+    }
+    echo json_encode($destinations);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] === 'createDestination') {
+    $data = getJsonInput();
+    $destination_name = $data['destination_name'];
+    $city = $data['city'];
+    $description = $data['description'];
+    $image_url = $data['image_url'];
+
+    $sql = "INSERT INTO Destinations (destination_name, city, description, image_url) VALUES ('$destination_name', '$city', '$description', '$image_url')";
+    if ($conn->query($sql) === TRUE) {
+        echo json_encode(["message" => "Destination created successfully"]);
+    } else {
+        echo json_encode(["error" => $conn->error]);
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && $_GET['action'] === 'updateDestination') {
+    $data = getJsonInput();
+    $destination_id = $data['destination_id'];
+    $destination_name = $data['destination_name'];
+    $city = $data['city'];
+    $description = $data['description'];
+    $image_url = $data['image_url'];
+
+    $sql = "UPDATE Destinations SET destination_name='$destination_name', city='$city', description='$description', image_url='$image_url' WHERE destination_id=$destination_id";
+    if ($conn->query($sql) === TRUE) {
+        echo json_encode(["message" => "Destination updated successfully"]);
+    } else {
+        echo json_encode(["error" => $conn->error]);
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET['action']) && $_GET['action'] === 'deleteDestination') {
+    $destination_id = $_GET['destination_id'];
+    $sql = "DELETE FROM Destinations WHERE destination_id=$destination_id";
+    if ($conn->query($sql) === TRUE) {
+        echo json_encode(["message" => "Destination deleted successfully"]);
+    } else {
+        echo json_encode(["error" => $conn->error]);
+    }
+}
 
 
 
+
+
+// CRUD for Transport
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getTransports') {
+    $sql = "SELECT * FROM Transport";
+    $result = $conn->query($sql);
+    $transports = [];
+    while ($row = $result->fetch_assoc()) {
+        $transports[] = $row;
+    }
+    echo json_encode($transports);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] === 'createTransport') {
+    $data = getJsonInput();
+    $type = $data['type'];
+    $departure_location = $data['departure_location'];
+    $arrival_location = $data['arrival_location'];
+    $departure_time = $data['departure_time'];
+    $arrival_time = $data['arrival_time'];
+
+    $sql = "INSERT INTO Transport (type, departure_location, arrival_location, departure_time, arrival_time) VALUES ('$type', '$departure_location', '$arrival_location', '$departure_time', '$arrival_time')";
+    if ($conn->query($sql) === TRUE) {
+        echo json_encode(["message" => "Transport created successfully"]);
+    } else {
+        echo json_encode(["error" => $conn->error]);
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && $_GET['action'] === 'updateTransport') {
+    $data = getJsonInput();
+    $transport_id = $data['transport_id'];
+    $type = $data['type'];
+    $departure_location = $data['departure_location'];
+    $arrival_location = $data['arrival_location'];
+    $departure_time = $data['departure_time'];
+    $arrival_time = $data['arrival_time'];
+
+    $sql = "UPDATE Transport SET type='$type', departure_location='$departure_location', arrival_location='$arrival_location', departure_time='$departure_time', arrival_time='$arrival_time' WHERE transport_id=$transport_id";
+    if ($conn->query($sql) === TRUE) {
+        echo json_encode(["message" => "Transport updated successfully"]);
+    } else {
+        echo json_encode(["error" => $conn->error]);
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET['action']) && $_GET['action'] === 'deleteTransport') {
+    $transport_id = $_GET['transport_id'];
+    $sql = "DELETE FROM Transport WHERE transport_id=$transport_id";
+    if ($conn->query($sql) === TRUE) {
+        echo json_encode(["message" => "Transport deleted successfully"]);
+    } else {
+        echo json_encode(["error" => $conn->error]);
+    }
+}
+// CRUD for Accommodation
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getAccommodations') {
+    $sql = "SELECT * FROM Accommodation";
+    $result = $conn->query($sql);
+    $accommodations = [];
+    while ($row = $result->fetch_assoc()) {
+        $accommodations[] = $row;
+    }
+    echo json_encode($accommodations);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] === 'createAccommodation') {
+    $data = getJsonInput();
+    $type=$data['type '];
+    $name = $data['name'];
+    $address = $data['address'];
+    $destination_id = $data['destination_id'];
+    $price_per_night = $data['price_per_night'];
+
+    $sql = "INSERT INTO Accommodation (name, address, destination_id, price_per_night) VALUES ('$name', '$address', $destination_id, $price_per_night)";
+    if ($conn->query($sql) === TRUE) {
+        echo json_encode(["message" => "Accommodation created successfully"]);
+    } else {
+        echo json_encode(["error" => $conn->error]);
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && $_GET['action'] === 'updateAccommodation') {
+    $data = getJsonInput();
+    $type=$data['type '];
+    $accommodation_id = $data['accommodation_id'];
+    $name = $data['name'];
+    $address = $data['address'];
+    $destination_id = $data['destination_id'];
+    $price_per_night = $data['price_per_night'];
+
+    $sql = "UPDATE Accommodation SET name='$name', address='$address', destination_id=$destination_id, price_per_night=$price_per_night WHERE accommodation_id=$accommodation_id";
+    if ($conn->query($sql) === TRUE) {
+        echo json_encode(["message" => "Accommodation updated successfully"]);
+    } else {
+        echo json_encode(["error" => $conn->error]);
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET['action']) && $_GET['action'] === 'deleteAccommodation') {
+    $accommodation_id = $_GET['accommodation_id'];
+    $sql = "DELETE FROM Accommodation WHERE accommodation_id=$accommodation_id";
+    if ($conn->query($sql) === TRUE) {
+        echo json_encode(["message" => "Accommodation deleted successfully"]);
+    } else {
+        echo json_encode(["error" => $conn->error]);
+    }
+} 
+} 
 ?>
+
