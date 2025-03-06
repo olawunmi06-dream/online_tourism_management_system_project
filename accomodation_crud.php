@@ -1,6 +1,5 @@
-<?php
-require('db.php'); 
-
+<?php 
+require('connect.db');
 // CRUD for Accommodation
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getAccommodations') {
     $sql = "SELECT * FROM Accommodation";

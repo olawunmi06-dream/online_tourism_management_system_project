@@ -1,69 +1,57 @@
+
 <?php
+require('connect.db');
 
-require('db.php');
-
-// CRUD for TourPackage
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getTourPackages') {
-    $sql = "SELECT * FROM TourPackage";
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getTransports') {
+    $sql = "SELECT * FROM Transport";
     $result = $conn->query($sql);
-    $tourPackages = [];
+    $transports = [];
     while ($row = $result->fetch_assoc()) {
-        $tourPackages[] = $row;
+        $transports[] = $row;
     }
-    echo json_encode($tourPackages);
+    echo json_encode($transports);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] === 'createTourPackage') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] === 'createTransport') {
     $data = getJsonInput();
-    $tour_package_name = $data['tour_package_name'];
-    $description = $data['description'];
-    $destination_id = $data['destination_id'];
-    $agent_id = $data['agent_id'];
-    $duration = $data['duration'];
-    $price = $data['price'];
-    $start_date = $data['start_date'];
-    $end_date = $data['end_date'];
-    $capacity = $data['capacity'];
-    $tour_status = $data['tour_status'];
-    $tour_language = $data['tour_language'];
+    $type = $data['type'];
+    $departure_location = $data['departure_location'];
+    $arrival_location = $data['arrival_location'];
+    $departure_time = $data['departure_time'];
+    $arrival_time = $data['arrival_time'];
 
-    $sql = "INSERT INTO TourPackage (tour_package_name, description, destination_id, agent_id, duration, price, start_date, end_date, capacity, tour_status, tour_language) VALUES ('$tour_package_name', '$description', $destination_id, $agent_id, $duration, $price, '$start_date', '$end_date', $capacity, '$tour_status', '$tour_language')";
+    $sql = "INSERT INTO Transport (type, departure_location, arrival_location, departure_time, arrival_time) VALUES ('$type', '$departure_location', '$arrival_location', '$departure_time', '$arrival_time')";
     if ($conn->query($sql) === TRUE) {
-        echo json_encode(["message" => "Tour package created successfully"]);
-    } else {
-        echo json_encode(["error" => $conn->error]);
-    }
-} 
-if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && $_GET['action'] === 'updateTourPackage') {
-    $data = getJsonInput();
-    $tour_package_id = $data['tour_package_id'];
-    $tour_package_name = $data['tour_package_name'];
-    $description = $data['description'];
-    $destination_id = $data['destination_id'];
-    $agent_id = $data['agent_id'];
-    $duration = $data['duration'];
-    $price = $data['price'];
-    $start_date = $data['start_date'];
-    $end_date = $data['end_date'];
-    $capacity = $data['capacity'];
-    $tour_status = $data['tour_status'];
-    $tour_language = $data['tour_language'];
-
-    $sql = "UPDATE TourPackage SET tour_package_name='$tour_package_name', description='$description', destination_id=$destination_id, agent_id=$agent_id, duration=$duration, price=$price, start_date='$start_date', end_date='$end_date', capacity=$capacity, tour_status='$tour_status', tour_language='$tour_language' WHERE tour_package_id=$tour_package_id";
-    if ($conn->query($sql) === TRUE) {
-        echo json_encode(["message" => "Tour package updated successfully"]);
+        echo json_encode(["message" => "Transport created successfully"]);
     } else {
         echo json_encode(["error" => $conn->error]);
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET['action']) && $_GET['action'] === 'deleteTourPackage') {
-    $tour_package_id = $_GET['tour_package_id'];
-    $sql = "DELETE FROM TourPackage WHERE tour_package_id=$tour_package_id";
+if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && $_GET['action'] === 'updateTransport') {
+    $data = getJsonInput();
+    $transport_id = $data['transport_id'];
+    $type = $data['type'];
+    $departure_location = $data['departure_location'];
+    $arrival_location = $data['arrival_location'];
+    $departure_time = $data['departure_time'];
+    $arrival_time = $data['arrival_time'];
+
+    $sql = "UPDATE Transport SET type='$type', departure_location='$departure_location', arrival_location='$arrival_location', departure_time='$departure_time', arrival_time='$arrival_time' WHERE transport_id=$transport_id";
     if ($conn->query($sql) === TRUE) {
-        echo json_encode(["message" => "Tour package deleted successfully"]);
+        echo json_encode(["message" => "Transport updated successfully"]);
+    } else {
+        echo json_encode(["error" => $conn->error]);
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET['action']) && $_GET['action'] === 'deleteTransport') {
+    $transport_id = $_GET['transport_id'];
+    $sql = "DELETE FROM Transport WHERE transport_id=$transport_id";
+    if ($conn->query($sql) === TRUE) {
+        echo json_encode(["message" => "Transport deleted successfully"]);
     } else {
         echo json_encode(["error" => $conn->error]);
     }
 } 
-?>    
+?> 

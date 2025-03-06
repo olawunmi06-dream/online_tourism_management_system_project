@@ -1,0 +1,450 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Mobile Navigation Toggle
+    const hamburger = document.querySelector(".hamburger")
+    const nav = document.querySelector("nav")
+  
+    if (hamburger && nav) {
+      hamburger.addEventListener("click", () => {
+        nav.classList.toggle("active")
+        document.body.classList.toggle("no-scroll")
+      })
+    }
+  
+    // Modal Functionality
+    const loginBtn = document.getElementById("loginBtn")
+    const registerBtn = document.getElementById("registerBtn")
+    const loginModal = document.getElementById("loginModal")
+    const registerModal = document.getElementById("registerModal")
+    const bookingModal = document.getElementById("bookingModal")
+    const closeModalBtns = document.querySelectorAll(".close-modal")
+    const showRegisterLink = document.getElementById("showRegister")
+    const showLoginLink = document.getElementById("showLogin")
+    const bookNowBtns = document.querySelectorAll(".package-card .btn-primary")
+  
+    // Open login modal
+    if (loginBtn && loginModal) {
+      loginBtn.addEventListener("click", () => {
+        loginModal.style.display = "block"
+      })
+    }
+  
+    // Open register modal
+    if (registerBtn && registerModal) {
+      registerBtn.addEventListener("click", () => {
+        registerModal.style.display = "block"
+      })
+    }
+  
+    // Close modals
+    closeModalBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        loginModal.style.display = "none"
+        registerModal.style.display = "none"
+        if (bookingModal) bookingModal.style.display = "none"
+      })
+    })
+  
+    // Switch between login and register modals
+    if (showRegisterLink && showLoginLink) {
+      showRegisterLink.addEventListener("click", (e) => {
+        e.preventDefault()
+        loginModal.style.display = "none"
+        registerModal.style.display = "block"
+      })
+  
+      showLoginLink.addEventListener("click", (e) => {
+        e.preventDefault()
+        registerModal.style.display = "none"
+        loginModal.style.display = "block"
+      })
+    }
+  
+    // Open booking modal
+    bookNowBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        if (bookingModal) {
+          const packageName = this.closest(".package-card").querySelector("h3").textContent
+          const packageSelect = document.getElementById("tourPackage")
+  
+          // Set the selected package in the dropdown
+          if (packageSelect) {
+            for (let i = 0; i < packageSelect.options.length; i++) {
+              if (packageSelect.options[i].text === packageName) {
+                packageSelect.selectedIndex = i
+                break
+              }
+            }
+          }
+  
+          bookingModal.style.display = "block"
+        }
+      })
+    })
+  
+    // Close modal when clicking outside
+    window.addEventListener("click", (e) => {
+      if (e.target === loginModal) {
+        loginModal.style.display = "none"
+      }
+      if (e.target === registerModal) {
+        registerModal.style.display = "none"
+      }
+      if (bookingModal && e.target === bookingModal) {
+        bookingModal.style.display = "none"
+      }
+    })
+  
+    // Form Validation
+    const loginForm = document.getElementById("loginForm")
+    const registerForm = document.getElementById("registerForm")
+    const bookingForm = document.getElementById("bookingForm")
+  
+    if (loginForm) {
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+        const email = document.getElementById("loginEmail").value
+        const password = document.getElementById("loginPassword").value
+  
+        // Here you would typically send this data to your server for authentication
+        console.log("Login attempt:", { email, password })
+  
+        // For demo purposes, show success message
+        alert("Login successful!")
+        loginModal.style.display = "none"
+      })
+    }
+  
+    if (registerForm) {
+      registerForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+        const firstName = document.getElementById("firstName").value
+        const lastName = document.getElementById("lastName").value
+        const email = document.getElementById("registerEmail").value
+        const phone = document.getElementById("phone").value
+        const password = document.getElementById("registerPassword").value
+        const confirmPassword = document.getElementById("confirmPassword").value
+  
+        // Basic validation
+        if (password !== confirmPassword) {
+          alert("Passwords do not match!")
+          return
+        }
+  
+        // Here you would typically send this data to your server to create a new user
+        console.log("Registration:", { firstName, lastName, email, phone, password })
+  
+        // For demo purposes, show success message
+        alert("Registration successful!")
+        registerModal.style.display = "none"
+      })
+    }
+  
+    if (bookingForm) {
+      bookingForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+        const name = document.getElementById("bookingName").value
+        const email = document.getElementById("bookingEmail").value
+        const phone = document.getElementById("bookingPhone").value
+        const tourPackage = document.getElementById("tourPackage").value
+        const travelDate = document.getElementById("travelDate").value
+        const travelers = document.getElementById("travelers").value
+        const emergencyContact = document.getElementById("emergencyContact").value
+        const specialRequests = document.getElementById("specialRequests").value
+  
+        // Here you would typically send this data to your server to create a booking
+        console.log("Booking:", {
+          name,
+          email,
+          phone,
+          tourPackage,
+          travelDate,
+          travelers,
+          emergencyContact,
+          specialRequests,
+        })
+  
+        // For demo purposes, show success message
+        alert("Booking successful! We will contact you shortly to confirm your reservation.")
+        bookingModal.style.display = "none"
+      })
+    }
+  
+    // Add this code after the booking form event listener
+  
+    // Review Modal Functionality
+    const reviewModal = document.getElementById("reviewModal")
+    const writeReviewBtns = document.querySelectorAll(".write-review-btn")
+    const reviewForm = document.getElementById("reviewForm")
+    const ratingStars = document.querySelectorAll(".rating-stars .star")
+  
+    // Open review modal
+    writeReviewBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        if (reviewModal) {
+          const packageCard = this.closest(".package-card")
+          const packageName = packageCard.querySelector("h3").textContent
+          const packageId = packageCard.dataset.packageId || "1" // Fallback to 1 if not set
+  
+          document.getElementById("tourPackageName").value = packageName
+          document.getElementById("reviewTourId").value = packageId
+  
+          // Reset form
+          document.getElementById("rating").value = ""
+          document.getElementById("reviewComment").value = ""
+          ratingStars.forEach((star) => star.classList.remove("active"))
+  
+          reviewModal.style.display = "block"
+        }
+      })
+    })
+  
+    // Handle star rating
+    ratingStars.forEach((star) => {
+      star.addEventListener("click", function () {
+        const rating = this.dataset.rating
+        document.getElementById("rating").value = rating
+  
+        // Update star display
+        ratingStars.forEach((s) => {
+          if (s.dataset.rating <= rating) {
+            s.classList.remove("far")
+            s.classList.add("fas")
+            s.classList.add("active")
+          } else {
+            s.classList.remove("fas")
+            s.classList.add("far")
+            s.classList.remove("active")
+          }
+        })
+      })
+    })
+  
+    // Handle review form submission
+    if (reviewForm) {
+      reviewForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+  
+        const tourId = document.getElementById("reviewTourId").value
+        const rating = document.getElementById("rating").value
+        const comment = document.getElementById("reviewComment").value
+  
+        if (!rating) {
+          alert("Please select a rating")
+          return
+        }
+  
+        // Create form data for submission
+        const formData = new FormData()
+        formData.append("tourId", tourId)
+        formData.append("rating", rating)
+        formData.append("comment", comment)
+  
+        // Send AJAX request
+        fetch("review.php", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              alert(data.message)
+              reviewModal.style.display = "none"
+            } else {
+              alert(data.message)
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error)
+            alert("An error occurred while submitting your review. Please try again.")
+          })
+      })
+    }
+  
+    // Testimonial Slider
+    const testimonialSlides = document.querySelectorAll(".testimonial-slide")
+    const dots = document.querySelectorAll(".dot")
+    const prevBtn = document.querySelector(".prev-btn")
+    const nextBtn = document.querySelector(".next-btn")
+    let currentSlide = 0
+  
+    function showSlide(n) {
+      // Hide all slides
+      testimonialSlides.forEach((slide) => {
+        slide.classList.remove("active")
+      })
+  
+      // Remove active class from all dots
+      dots.forEach((dot) => {
+        dot.classList.remove("active")
+      })
+  
+      // Show the current slide and activate the corresponding dot
+      testimonialSlides[n].classList.add("active")
+      dots[n].classList.add("active")
+    }
+  
+    function nextSlide() {
+      currentSlide++
+      if (currentSlide >= testimonialSlides.length) {
+        currentSlide = 0
+      }
+      showSlide(currentSlide)
+    }
+  
+    function prevSlide() {
+      currentSlide--
+      if (currentSlide < 0) {
+        currentSlide = testimonialSlides.length - 1
+      }
+      showSlide(currentSlide)
+    }
+  
+    // Add event listeners for testimonial navigation
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener("click", prevSlide)
+      nextBtn.addEventListener("click", nextSlide)
+    }
+  
+    // Add event listeners for dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        currentSlide = index
+        showSlide(currentSlide)
+      })
+    })
+  
+    // Auto slide every 5 seconds
+    setInterval(nextSlide, 5000)
+  
+    // Smooth scrolling for navigation links
+    const navLinks = document.querySelectorAll("nav a, .footer-links a")
+  
+    navLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        const href = this.getAttribute("href")
+  
+        // Check if the href is a section ID
+        if (href.startsWith("#") && href.length > 1) {
+          e.preventDefault()
+  
+          const targetSection = document.querySelector(href)
+  
+          if (targetSection) {
+            // Close mobile menu if open
+            if (nav.classList.contains("active")) {
+              nav.classList.remove("active")
+              document.body.classList.remove("no-scroll")
+            }
+  
+            // Smooth scroll to the section
+            window.scrollTo({
+              top: targetSection.offsetTop - 80,
+              behavior: "smooth",
+            })
+  
+            // Update active link
+            navLinks.forEach((link) => link.classList.remove("active"))
+            this.classList.add("active")
+          }
+        }
+      })
+    })
+  
+    // Update active nav link on scroll
+    window.addEventListener("scroll", () => {
+      const scrollPosition = window.scrollY
+  
+      // Get all sections
+      const sections = document.querySelectorAll("section")
+  
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 100
+        const sectionHeight = section.offsetHeight
+        const sectionId = section.getAttribute("id")
+  
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          navLinks.forEach((link) => {
+            link.classList.remove("active")
+            if (link.getAttribute("href") === #${sectionId}) {
+              link.classList.add("active")
+            }
+          })
+        }
+      })
+    })
+  
+    // Add reviewModal to the close modal functionality
+    closeModalBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        loginModal.style.display = "none"
+        registerModal.style.display = "none"
+        if (bookingModal) bookingModal.style.display = "none"
+        if (reviewModal) reviewModal.style.display = "none"
+      })
+    })
+  
+    // Add reviewModal to the click outside functionality
+    window.addEventListener("click", (e) => {
+      if (e.target === loginModal) {
+        loginModal.style.display = "none"
+      }
+      if (e.target === registerModal) {
+        registerModal.style.display = "none"
+      }
+      if (bookingModal && e.target === bookingModal) {
+        bookingModal.style.display = "none"
+      }
+      if (e.target === reviewModal) {
+        reviewModal.style.display = "none"
+      }
+    })
+  
+    // Contact Form Submission
+    const contactForm = document.getElementById("contactForm")
+  
+    if (contactForm) {
+      contactForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+  
+        // Get form data
+        const formData = new FormData(contactForm)
+  
+        // Send AJAX request
+        fetch("contact.php", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              // Show success message
+              alert(data.message)
+              contactForm.reset()
+            } else {
+              // Show error message
+              alert(data.message)
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error)
+            alert("An error occurred while submitting the form. Please try again.")
+          })
+      })
+    }
+  
+    // Check for contact form submission status in URL parameters
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search)
+      const contactStatus = urlParams.get("contact")
+  
+      if (contactStatus === "success") {
+        alert("Thank you for your message! We will get back to you soon.")
+      } else if (contactStatus === "error") {
+        const errorMessage = urlParams.get("message") || "An error occurred while submitting the form."
+        alert(errorMessage)
+      }
+    })
+
+
+

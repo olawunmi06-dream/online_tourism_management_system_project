@@ -1,6 +1,7 @@
 <?php
 
-require('db.php');
+require('connect.db');
+
 
 
 // CRUD for User

@@ -1,5 +1,5 @@
 <?php
-require('db.php');
+require('connect.db');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getTransports') {
     $sql = "SELECT * FROM Transport";

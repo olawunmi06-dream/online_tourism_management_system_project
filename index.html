@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelEase - Online Tourism Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+            <h1>explore and more </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#packages">Tour Packages</a></li>
+                    <li><a href="index.html#ola">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button id="loginBtn" class="btn">Login</button>
+                <button id="registerBtn" class="btn btn-primary">Register</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 style="color:blue;">Discover the World with Us</h1>
+                <p>Explore amazing destinations and create unforgettable memories</p>
+                <div class="search-box">
+                    <input type="text" placeholder="Search destinations...">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Destinations -->
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Destinations</h2>
+                <p>Explore our most visited places around the world</p>
+            </div>
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="paris.jpg"  width="100" alt="Paris">
+                    </div>
+                    <div class="destination-info">  
+                        <h3>Paris, France</h3>
+                        <p>The city of love and lights</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="/placeholder.svg" width="100" alt="Bali">
+                    </div>
+                    <div class="destination-info">
+                        <h3>Bali, Indonesia</h3>
+                        <p>Island paradise with stunning beaches</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="/placeholder.svg?height=300&w"   width="Tokyo">
+                    </div>
+                    <div class="destination-info">
+                        <h3>Tokyo, Japan</h3>
+                        <p>Modern metropolis with rich culture</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="/placeholder.svg?height=300&width=400" alt="New York">
+                    </div>
+                    <div class="destination-info">
+                        <h3>New York, USA</h3>
+                        <p>The city that never sleeps</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+                <!-- New Destinations -->
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Santorini">
+                    </div>
+                    <div class="destination-info">
+                        <h3>Santorini, Greece</h3>
+                        <p>Stunning white buildings and blue domes</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Cairo">
+                    </div>
+                    <div class="destination-info">
+                        <h3>Cairo, Egypt</h3>
+                        <p>Ancient pyramids and rich history</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Sydney">
+                    </div>
+                    <div class="destination-info">
+                        <h3>Sydney, Australia</h3>
+                        <p>Iconic harbor and vibrant culture</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Rio de Janeiro">
+                    </div>
+                    <div class="destination-info">
+                        <h3>Rio de Janeiro, Brazil</h3>
+                        <p>Beautiful beaches and Christ the Redeemer</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Machu Picchu">
+                    </div>
+                    <div class="destination-info">
+                        <h3>Machu Picchu, Peru</h3>
+                        <p>Ancient Incan citadel in the Andes</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Packages -->
+    <section id="packages" class="packages">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tour Packages</h2>
+                <p>Choose from our carefully crafted tour packages</p>
+            </div>
+            <div class="package-grid">
+                <div class="package-card" data-package-id="1">
+                    <div class="package-img">
+                        <img src="/placeholder.svg?height=250&width=350" alt="European Adventure">
+                        <div class="package-price">$1,299</div>
+                    </div>
+                    <div class="package-info">
+                        <h3>European Adventure</h3>
+                        <div class="package-details">
+                            <span><i class="fas fa-map-marker-alt"></i> Multiple Cities</span>
+                            <span><i class="fas fa-calendar-alt"></i> 10 Days</span>
+                            <span><i class="fas fa-users"></i> Max 15 People</span>
+                        </div>
+                        <p>Explore the best of Europe including Paris, Rome, and Barcelona.</p>
+                        <button class="btn btn-primary btn-block">Book Now</button>
+                        <button class="btn btn-secondary btn-block write-review-btn" style="margin-top: 10px;">Write a Review</button>
+                    </div>
+                </div>
+                <div class="package-card" data-package-id="2">
+                    <div class="package-img">
+                        <img src="/placeholder.svg?height=250&width=350" alt="Asian Expedition">
+                        <div class="package-price">$1,499</div>
+                    </div>
+                    <div class="package-info">
+                        <h3>Asian Expedition</h3>
+                        <div class="package-details">
+                            <span><i class="fas fa-map-marker-alt"></i> Multiple Cities</span>
+                            <span><i class="fas fa-calendar-alt"></i> 12 Days</span>
+                            <span><i class="fas fa-users"></i> Max 12 People</span>
+                        </div>
+                        <p>Discover the wonders of Asia including Tokyo, Bangkok, and Singapore.</p>
+                        <button class="btn btn-primary btn-block">Book Now</button>
+                        <button class="btn btn-secondary btn-block write-review-btn" style="margin-top: 10px;">Write a Review</button>
+                    </div>
+                </div>
+                <div class="package-card" data-package-id="3">
+                    <div class="package-img">
+                        <img src="/placeholder.svg?height=250&width=350" alt="African Safari">
+                        <div class="package-price">$1,899</div>
+                    </div>
+                    <div class="package-info">
+                        <h3>African Safari</h3>
+                        <div class="package-details">
+                            <span><i class="fas fa-map-marker-alt"></i> Multiple Locations</span>
+                            <span><i class="fas fa-calendar-alt"></i> 8 Days</span>
+                            <span><i class="fas fa-users"></i> Max 10 People</span>
+                        </div>
+                        <p>Experience the wildlife and natural beauty of Africa's best safari destinations.</p>
+                        <button class="btn btn-primary btn-block">Book Now</button>
+                        <button class="btn btn-secondary btn-block write-review-btn" style="margin-top: 10px;">Write a Review</button>
+                    </div>
+                </div>
+                <!-- New Tour Packages -->
+                <div class="package-card" data-package-id="4">
+                    <div class="package-img">
+                        <img src="/placeholder.svg?height=250&width=350" alt="Greek Island Hopping">
+                        <div class="package-price">$1,599</div>
+                    </div>
+                    <div class="package-info">
+                        <h3>Greek Island Hopping</h3>
+                        <div class="package-details">
+                            <span><i class="fas fa-map-marker-alt"></i> Greek Islands</span>
+                            <span><i class="fas fa-calendar-alt"></i> 9 Days</span>
+                            <span><i class="fas fa-users"></i> Max 12 People</span>
+                        </div>
+                        <p>Explore the beautiful islands of Santorini, Mykonos, and Crete with crystal clear waters.</p>
+                        <button class="btn btn-primary btn-block">Book Now</button>
+                        <button class="btn btn-secondary btn-block write-review-btn" style="margin-top: 10px;">Write a Review</button>
+                    </div>
+                </div>
+                <div class="package-card" data-package-id="5">
+                    <div class="package-img">
+                        <img src="/placeholder.svg?height=250&width=350" alt="Egyptian Wonders">
+                        <div class="package-price">$1,350</div>
+                    </div>
+                    <div class="package-info">
+                        <h3>Egyptian Wonders</h3>
+                        <div class="package-details">
+                            <span><i class="fas fa-map-marker-alt"></i> Cairo, Luxor, Aswan</span>
+                            <span><i class="fas fa-calendar-alt"></i> 7 Days</span>
+                            <span><i class="fas fa-users"></i> Max 15 People</span>
+                        </div>
+                        <p>Discover the ancient pyramids, temples, and cruise along the Nile River.</p>
+                        <button class="btn btn-primary btn-block">Book Now</button>
+                        <button class="btn btn-secondary btn-block write-review-btn" style="margin-top: 10px;">Write a Review</button>
+                    </div>
+                </div>
+                <div class="package-card" data-package-id="6">
+                    <div class="package-img">
+                        <img src="/placeholder.svg?height=250&width=350" alt="Australian Highlights">
+                        <div class="package-price">$2,199</div>
+                    </div>
+                    <div class="package-info">
+                        <h3>Australian Highlights</h3>
+                        <div class="package-details">
+                            <span><i class="fas fa-map-marker-alt"></i> Sydney, Melbourne, Cairns</span>
+                            <span><i class="fas fa-calendar-alt"></i> 14 Days</span>
+                            <span><i class="fas fa-users"></i> Max 10 People</span>
+                        </div>
+                        <p>Experience the best of Australia from city life to the Great Barrier Reef.</p>
+                        <button class="btn btn-primary btn-block">Book Now</button>
+                        <button class="btn btn-secondary btn-block write-review-btn" style="margin-top: 10px;">Write a Review</button>
+                    </div>
+                </div>
+                <div class="package-card" data-package-id="7">
+                    <div class="package-img">
+                        <img src="/placeholder.svg?height=250&width=350" alt="Brazilian Adventure">
+                        <div class="package-price">$1,750</div>
+                    </div>
+                    <div class="package-info">
+                        <h3>Brazilian Adventure</h3>
+                        <div class="package-details">
+                            <span><i class="fas fa-map-marker-alt"></i> Rio, Amazon, Iguazu Falls</span>
+                            <span><i class="fas fa-calendar-alt"></i> 11 Days</span>
+                            <span><i class="fas fa-users"></i> Max 12 People</span>
+                        </div>
+                        <p>Explore vibrant cities, the Amazon rainforest, and spectacular waterfalls.</p>
+                        <button class="btn btn-primary btn-block">Book Now</button>
+                        <button class="btn btn-secondary btn-block write-review-btn" style="margin-top: 10px;">Write a Review</button>
+                    </div>
+                </div>
+                <div class="package-card" data-package-id="8">
+                    <div class="package-img">
+                        <img src="/placeholder.svg?height=250&width=350" alt="Peruvian Expedition">
+                        <div class="package-price">$1,650</div>
+                    </div>
+                    <div class="package-info">
+                        <h3>Peruvian Expedition</h3>
+                        <div class="package-details">
+                            <span><i class="fas fa-map-marker-alt"></i> Lima, Cusco, Machu Picchu</span>
+                            <span><i class="fas fa-calendar-alt"></i> 9 Days</span>
+                            <span><i class="fas fa-users"></i> Max 10 People</span>
+                        </div>
+                        <p>Discover ancient Incan ruins, colonial cities, and the Sacred Valley.</p>
+                        <button class="btn btn-primary btn-block">Book Now</button>
+                        <button class="btn btn-secondary btn-block write-review-btn" style="margin-top: 10px;">Write a Review</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Why Choose Us -->
+    <section class="why-us">  
+        <div class="container">
+            <div class="section-header">
+                <h2 id="ola">About us </h2>
+                <p>We provide the best travel experience for our customers</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Worldwide Destinations</h3>
+                    <p>We offer tours to over 100 countries across all continents.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Best Price Guarantee</h3>
+                    <p>We promise to offer the best rates with no hidden charges.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Customer Support</h3>
+                    <p>Our support team is available round the clock to assist you.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure Booking</h3>
+                    <p>Your payments and personal information are always protected.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="awards">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Awards & Recognition</h2>
+                <p>Excellence recognized by industry leaders and customers alike</p>
+            </div>
+            <div class="awards-container">
+                <div class="award-item">
+                    <div class="award-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="award-info">
+                        <h3>Best Tour Operator 2024</h3>
+                        <p>World Travel Awards</p>
+                        <span class="award-year">2024</span>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="award-info">
+                        <h3>Excellence in Customer Service</h3>
+                        <p>International Tourism Association</p>
+                        <span class="award-year">2023</span>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="award-info">
+                        <h3>Sustainable Tourism Award</h3>
+                        <p>Global Sustainable Tourism Council</p>
+                        <span class="award-year">2023</span>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="award-info">
+                        <h3>Top Luxury Travel Provider</h3>
+                        <p>Luxury Travel Guide</p>
+                        <span class="award-year">2022</span>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="award-info">
+                        <h3>Innovation in Travel Technology</h3>
+                        <p>Travel Tech Awards</p>
+                        <span class="award-year">2022</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Read testimonials from our satisfied travelers</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        <p>"The European Adventure tour was absolutely amazing! The guides were knowledgeable and the accommodations were excellent. Will definitely book with TravelEase again!"</p>
+                        <div class="testimonial-author">
+                            <img src="/placeholder.svg?height=60&width=60" alt="John Doe">
+                            <div>
+                                <h4>John Doe</h4>
+                                <span>Traveled to Europe</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p>"Our family trip to Bali was perfectly organized. Everything from transport to accommodations was top-notch. The kids loved the activities and we enjoyed the cultural experiences."</p>
+                        <div class="testimonial-author">
+                            <img src="/placeholder.svg?height=60&width=60" alt="Sarah Johnson">
+                            <div>
+                                <h4>Sarah Johnson</h4>
+                                <span>Traveled to Bali</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p>"The African Safari exceeded all our expectations. We saw the Big Five in just two days! The guides were exceptional and the whole experience was unforgettable."</p>
+                        <div class="testimonial-author">
+                            <img src="/placeholder.svg?height=60&width=60" alt="Michael Brown">
+                            <div>
+                                <h4>Michael Brown</h4>
+                                <span>Traveled to Kenya</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-controls">
+                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="testimonial-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest travel deals and updates delivered to your inbox</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Have questions or need assistance? Reach out to our team</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">    
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Our Location</h3>
+                            <p>123 Travel Street, City, Country</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone Number</h3>
+                            <p>+1 234 567 890</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email Address</h3>
+                            <p>info@travelease.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Working Hours</h3>
+                            <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    
+                   <form id="contact-form">
+    <h2>Contact Form</h2>
+    <label for="message-id">Message ID:</label>
+    <input type="text" id="message-id" name="message-id" disabled>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="subject">Subject:</label>
+    <input type="text" id="subject" name="subject" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <label for="submission-date">Submission Date:</label>
+    <input type="date" id="submission-date" name="submission-date" disabled>
+
+    <label for="is-read">Is Read:</label>
+    <input type="checkbox" id="is-read" name="is-read" disabled>
+
+    <button type="submit">Submit</button>
+</form>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>TravelEase</h3>
+                    <p>We are dedicated to providing exceptional travel experiences that create lasting memories for our customers.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#packages">Tour Packages</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Booking Policy</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Travel Street, City, Country</p>
+                    <p><i class="fas fa-phone-alt"></i> +1 234 567 890</p>
+                    <p><i class="fas fa-envelope"></i> info@travelease.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TravelEase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </div>
+                <p class="text-center">Don't have an account? <a href="#" id="showRegister">Register</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                </div>
+                <p class="text-center">Already have an account? <a href="#" id="showLogin">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content booking-modal">
+            <span class="close-modal">&times;</span>
+            <h2>Book Tour Package</h2>
+            <form id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bookingName">Full Name</label>
+                        <input type="text" id="bookingName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookingEmail">Email</label>
+                        <input type="email" id="bookingEmail" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bookingPhone">Phone Number</label>
+                        <input type="tel" id="bookingPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tourPackage">Tour Package</label>
+                        <select id="tourPackage" required>
+                            <option value="">Select a package</option>
+                            <option value="european-adventure">European Adventure</option>
+                            <option value="asian-expedition">Asian Expedition</option>
+                            <option value="african-safari">African Safari</option>
+                            <option value="greek-island-hopping">Greek Island Hopping</option>
+                            <option value="egyptian-wonders">Egyptian Wonders</option>
+                            <option value="australian-highlights">Australian Highlights</option>
+                            <option value="brazilian-adventure">Brazilian Adventure</option>
+                            <option value="peruvian-expedition">Peruvian Expedition</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="travelDate">Travel Date</label>
+                        <input type="date" id="travelDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="travelers">Number of Travelers</label>
+                        <input type="number" id="travelers" min="1" max="10" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyContact">Emergency Contact</label>
+                    <input type="text" id="emergencyContact" required>
+                </div>
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests</label>
+                    <textarea id="specialRequests" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Book Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Write a Review</h2>
+            <form id="reviewForm">
+                <input type="hidden" id="reviewTourId" name="tourId">
+                <div class="form-group">
+                    <label for="tourPackageName">Tour Package</label>
+                    <input type="text" id="tourPackageName" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Rating</label>
+                    <div class="rating-stars">
+                        <i class="far fa-star star" data-rating="1"></i>
+                        <i class="far fa-star star" data-rating="2"></i>
+                        <i class="far fa-star star" data-rating="3"></i>
+                        <i class="far fa-star star" data-rating="4"></i>
+                        <i class="far fa-star star" data-rating="5"></i>
+                    </div>
+                    <input type="hidden" id="rating" name="rating" required>
+                </div>
+                <div class="form-group">
+                    <label for="reviewComment">Your Review</label>
+                    <textarea id="reviewComment" name="comment" rows="5" placeholder="Share your experience with this tour package..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Submit Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
